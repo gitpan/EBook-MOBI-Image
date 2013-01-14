@@ -1,0 +1,9 @@
+Changes
+LICENSE
+MANIFEST
+META.yml
+Makefile.PL
+README.md
+dist.ini
+lib/EBook/MOBI/Image.pm
+t/resize.t
