@@ -21,9 +21,10 @@ my %WriteMakefileArgs = (
   "NAME" => "EBook::MOBI::Image",
   "PREREQ_PM" => {
     "File::Basename" => 0,
+    "File::Temp" => 0,
     "Image::Imlib2" => 0
   },
-  "VERSION" => "0.1",
+  "VERSION" => "0.11",
   "test" => {
     "TESTS" => "t/*.t"
   }

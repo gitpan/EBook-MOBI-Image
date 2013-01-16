@@ -1,6 +1,6 @@
 package EBook::MOBI::Image;
 
-our $VERSION = 0.1;
+our $VERSION = 0.11;
 
 use strict;
 use warnings;

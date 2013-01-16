@@ -4,7 +4,6 @@ use strict;
 use warnings;
 
 use File::Temp qw(tempfile);
-use Data::Random qw(rand_image);
 use Image::Imlib2;
 
 #######################
