@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 
+if (!eval "require Image::Imlib2"){print " -- This distribution requires Image::Imlib2! -- ";exit 0;}
 
 
 use ExtUtils::MakeMaker 6.30;
@@ -24,7 +25,7 @@ my %WriteMakefileArgs = (
     "File::Temp" => 0,
     "Image::Imlib2" => 0
   },
-  "VERSION" => "0.11",
+  "VERSION" => "0.12",
   "test" => {
     "TESTS" => "t/*.t"
   }
