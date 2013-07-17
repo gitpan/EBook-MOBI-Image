@@ -1,12 +1,12 @@
 package EBook::MOBI::Image;
 
-our $VERSION = 0.12;
+our $VERSION = 0.13;
 
 use strict;
 use warnings;
 
 use Image::Imlib2;
-use File::Basename;
+use File::Temp qw( tempfile );
 
 # Constructor of this class
 sub new {
@@ -58,20 +58,15 @@ sub rescale_dimensions {
     # Prepare for work...
     my $image = Image::Imlib2->load($image_path);
 
-    # Get details for renaming
-    my @suffixlist = qw( .jpg .jpeg .gif .png );
-    my ($name,$path,$suffix) = fileparse($image_path,@suffixlist);
-
     # determine the size of the image
     my $width = $image->width();
     my $height= $image->height();
 
+    # write in tempfile, so that we don't destroy the original image
+    my ($fh, $outfilename) = tempfile(UNLINK => 1, SUFFIX => '.jpg');
+
     # Only resize the image if it is bigger than max
     if ($width > $self->{max_width} or $height > $self->{max_height}) {
-
-        # We rename the out-file so that we don't destroy the original
-        # picture by overwriting it with the resized version
-        my $outfilename = $path . $name . '-mobi_resized.jpg';
 
         #copy ($image_path, $outfilename);
         $self->_debug(  "Image $image_path is of size $width"."x$height"
@@ -104,9 +99,6 @@ sub rescale_dimensions {
 
         # BUG: Seems like Kindle Reader can't display PNG in my tests...
         # SO I CONVERT EVERYTHING TO JPEG
-        my $outfilename = $path . $name . '-mobi.jpg';
-
-        # Write the file as JPG
         $image->save($outfilename);
 
         # this is so that return returns the right value
@@ -152,7 +144,7 @@ The code is meant to be used in object oriented style, so you are asked to creat
 
 According to my own research at the web, it is a good idea to have a maximum size for images of 520 x 622. And this is what this method does, it ensures that this maximum is kept.
 
-Pass a path to an image as the first argument, you will then get back the path of a rescaled image. The image is only rescaled if necessary.
+Pass a path to an image as the first argument, you will then get back the path of a rescaled image. The image is only rescaled if necessary. The image is a temporary copy (to protect the original) and will be deleted after your code exits.
 
 Attention: All pictures, no matter what size will be converted to JPG. In my tests, the Kindle-Reader failed to display PNG, that is why I convert everything - to go safe.
 
@@ -168,7 +160,7 @@ Stop debug messages and erease the reference to the subroutine.
 
 =head1 TODO
 
-A method to 'clean up' and also to change the maximum values would be nice.
+A method to change the maximum values would be nice.
 
 =head1 COPYRIGHT & LICENSE
 

@@ -1,3 +1,7 @@
+0.13  2013-07-17
+
+    - Use temporary images which get unlinked after ebook creation
+
 0.12  2013-04-09
 
     - Abort installation if Image::Imlib2 is not installed (dzil)
