@@ -21,12 +21,15 @@ my %WriteMakefileArgs = (
   "LICENSE" => "artistic_2",
   "NAME" => "EBook::MOBI::Image",
   "PREREQ_PM" => {
-    "File::Basename" => 0,
     "File::Temp" => 0,
-    "Image::Imlib2" => 0
+    "Image::Imlib2" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  "TEST_REQUIRES" => {},
-  "VERSION" => "0.13",
+  "TEST_REQUIRES" => {
+    "Test::More" => 0
+  },
+  "VERSION" => "0.14",
   "test" => {
     "TESTS" => "t/*.t"
   }

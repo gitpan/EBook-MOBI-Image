@@ -1,3 +1,7 @@
+0.14  2013-07-17
+
+    - Detect prereqs automatically
+
 0.13  2013-07-17
 
     - Use temporary images which get unlinked after ebook creation

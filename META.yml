@@ -2,7 +2,8 @@
 abstract: 'Make sure that pictures cope with the MOBI standards.'
 author:
   - 'Boris Däppen <boris_daeppen@bluewin.ch>'
-build_requires: {}
+build_requires:
+  Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -13,7 +14,8 @@ meta-spec:
   version: 1.4
 name: EBook-MOBI-Image
 requires:
-  File::Basename: 0
   File::Temp: 0
   Image::Imlib2: 0
-version: 0.13
+  strict: 0
+  warnings: 0
+version: 0.14
