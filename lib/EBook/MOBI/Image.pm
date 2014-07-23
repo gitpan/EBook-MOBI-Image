@@ -1,6 +1,6 @@
 package EBook::MOBI::Image;
 
-our $VERSION = 0.15;
+our $VERSION = 0.16;
 
 use strict;
 use warnings;
@@ -162,6 +162,10 @@ Stop debug messages and erease the reference to the subroutine.
 =head1 TODO
 
 A method to change the maximum values would be nice.
+
+=head1 LIMITATIONS
+
+A development version of C<Imlib2> (non-perl) must be installed locally before installing this module.
 
 =head1 COPYRIGHT & LICENSE
 

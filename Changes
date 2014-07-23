@@ -1,3 +1,7 @@
+0.16  2014-07-23
+
+    - added hint for Imlib2 as non-perl dependency to the docs
+
 0.15  2014-04-02
 
     - renamed README.md to README
